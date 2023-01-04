@@ -37,6 +37,7 @@ require "db_connect.php";
       <option value="seller">Seller</option>
     </select>
   </div>
+  <div id="seller-fields" style="display:none">
   <div class="form-group">
     <label for="shop_name">Shop Name:</label>
     <input type="text" class="form-control" id="shop_name" name="shop_name">
@@ -49,10 +50,11 @@ require "db_connect.php";
     <label for="shop_location">Shop Location:</label>
     <input type="text" class="form-control" id="shop_location" name="shop_location">
   </div>
+  </div>
   <input type="submit" class="btn btn-primary" value="Submit">
 </form>
 
-//Js&Jquery files 
+<!-- Js&Jquery files  -->
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -71,6 +73,18 @@ require "db_connect.php";
       }
     });
   });
+
+
+  function toggleSellerFields() {
+    var type = document.getElementById('type').value;
+    var sellerFields = document.getElementById('seller-fields');
+    if (type == 'seller') {
+      sellerFields.style.display = 'block';
+    } else {
+      sellerFields.style.display = 'none';
+    }
+  }
+  document.getElementById('type').addEventListener('change', toggleSellerFields);
 </script>
   </body>
 </html>
